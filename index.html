@@ -186,20 +186,25 @@ nav.scrolled{
 .case-card h3 em{font-style:italic;color:var(--acc)}
 .case-desc{color:var(--ink-soft);max-width:60ch;font-size:.93rem;margin:0}
 
+/* split case (text left, media right) */
+.case-split{display:grid;grid-template-columns:.85fr 1.15fr;align-items:center}
+@media(max-width:760px){.case-split{grid-template-columns:1fr}}
+.case-split .case-text{padding:clamp(1.6rem,2.5vw,2.4rem)}
+.case-split .case-media{padding:clamp(1.2rem,2vw,1.8rem);border-left:1px solid var(--line)}
+@media(max-width:760px){.case-split .case-media{border-left:0;border-top:1px solid var(--line)}}
+.case-split .carousel-wrap{margin-top:0;padding:0}
+
 /* carousel */
-.carousel-wrap{position:relative;overflow:hidden;margin-top:1.5rem}
-.carousel{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0 clamp(1.6rem,2.5vw,2.2rem) 1rem;scrollbar-width:none;overscroll-behavior-x:contain;position:relative}
-.carousel::-webkit-scrollbar{display:none}
+.carousel-wrap{position:relative;overflow:hidden;margin-top:1.5rem;padding:0 clamp(1.6rem,2.5vw,2.2rem) .2rem}
+.carousel{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1);will-change:transform}
 .carousel .slide{
-  flex:0 0 min(85%,380px);scroll-snap-align:start;border-radius:10px;overflow:hidden;
-  border:1px solid var(--line);background:var(--bg-warm);
-  transition:transform .3s;cursor:zoom-in;
+  flex:0 0 100%;min-width:0;border-radius:10px;overflow:hidden;
+  border:1px solid var(--line);background:var(--bg-warm);cursor:zoom-in;
 }
-.carousel .slide:hover{transform:translateY(-3px)}
-.carousel .slide img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top center;display:block;background:#fff}
+.carousel .slide img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top center;display:block;background:#fff;pointer-events:none}
 .carousel .slide .cap{padding:.6rem .9rem;font-size:.78rem;font-weight:500;color:var(--ink-soft)}
 .carousel-nav{
-  display:flex;gap:.5rem;justify-content:center;padding:.8rem 0 0;
+  display:flex;gap:.5rem;justify-content:center;padding:.9rem 0 0;
 }
 .carousel-nav button{
   width:8px;height:8px;border-radius:50%;border:0;background:var(--ink-faint);cursor:pointer;
@@ -391,22 +396,20 @@ footer{border-top:1px solid var(--line);padding:2rem var(--gutter) 1.6rem;backgr
 
     <div class="cases">
       <!-- Sauermann -->
-      <div class="case-card reveal">
-        <div class="case-top">
-          <h3>Sicherheitsdienst Sauermann — <em>drei Portale,</em> ein System.</h3>
-          <p class="case-desc">Für Sauermann haben wir die komplette digitale Infrastruktur gebaut: ein Einsatzplanungs-Portal, über das Mitarbeiter automatisiert ihre Schichtpläne erhalten. Ein Kundenportal, in dem Kunden ihren eigenen Account verwalten und Einstellungen ändern können. Und ein ERP-System zur internen Bestandsverwaltung.</p>
+      <div class="case-card case-split reveal">
+        <div class="case-text">
+          <h3>Sicherheitsdienst Sauermann — <em>Einsatzplanung,</em> automatisiert.</h3>
+          <p class="case-desc">Für Sauermann haben wir das Einsatzplanungs-Portal gebaut: Mitarbeiter erhalten ihren Schichtplan vollautomatisch, inklusive E-Mail-Versand. Darüber hinaus haben wir ein Kundenportal mit individuellen Accounts sowie ein ERP-System zur internen Bestandsverwaltung umgesetzt — alles auf einem gemeinsamen, modernen Stack.</p>
         </div>
-
-        <div class="carousel-wrap">
-          <div class="carousel" id="sauCarousel">
-            <div class="slide"><img src="https://raw.githubusercontent.com/HenningSanders/SandersHaluskaIT/main/Einsatzplanung%20Screenshot%20Plan.png" alt="Einsatzplanung Schichtplan"><div class="cap">Einsatzplanung — automatisierter Schichtplan</div></div>
-            <div class="slide"><img src="https://raw.githubusercontent.com/HenningSanders/SandersHaluskaIT/main/Mitarbeiter%20Einsatzportal%20Henning.png" alt="Mitarbeiter Einsatzportal"><div class="cap">Mitarbeiter-Einsatzportal</div></div>
-            <div class="slide"><img src="https://raw.githubusercontent.com/HenningSanders/SandersHaluskaIT/main/Mitarbeiter%20Email%20Senden.png" alt="E-Mail Versand"><div class="cap">Automatisierter E-Mail-Versand</div></div>
-            <div class="slide"><img src="https://raw.githubusercontent.com/HenningSanders/SandersHaluskaIT/main/Sauermann%20Kundenportal%20Login.png" alt="Kundenportal Login"><div class="cap">Kundenportal — Login</div></div>
-            <div class="slide"><img src="https://raw.githubusercontent.com/HenningSanders/SandersHaluskaIT/main/Sauermann%20Kundenportal%20Screenshot.png" alt="Kundenportal Dashboard"><div class="cap">Kundenportal — Dashboard</div></div>
-            <div class="slide"><img src="https://raw.githubusercontent.com/HenningSanders/SandersHaluskaIT/main/Logistikportal%20Sauermann.png" alt="Logistikportal ERP"><div class="cap">ERP — Bestandsverwaltung</div></div>
+        <div class="case-media">
+          <div class="carousel-wrap">
+            <div class="carousel" id="sauCarousel">
+              <div class="slide"><img src="https://raw.githubusercontent.com/HenningSanders/SandersHaluskaIT/main/Einsatzplanung%20Screenshot%20Plan.png" alt="Einsatzplanung Schichtplan"><div class="cap">Einsatzplanung — automatisierter Schichtplan</div></div>
+              <div class="slide"><img src="https://raw.githubusercontent.com/HenningSanders/SandersHaluskaIT/main/Mitarbeiter%20Einsatzportal%20Henning.png" alt="Mitarbeiter Einsatzportal"><div class="cap">Mitarbeiter-Einsatzportal</div></div>
+              <div class="slide"><img src="https://raw.githubusercontent.com/HenningSanders/SandersHaluskaIT/main/Mitarbeiter%20Email%20Senden.png" alt="E-Mail Versand"><div class="cap">Automatisierter E-Mail-Versand</div></div>
+            </div>
+            <div class="carousel-nav" id="sauNav"></div>
           </div>
-          <div class="carousel-nav" id="sauNav"></div>
         </div>
       </div>
 
@@ -540,10 +543,11 @@ lbClose.addEventListener('click',closeLb);
 lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
 addEventListener('keydown',e=>{if(e.key==='Escape')closeLb()});
 
-document.querySelectorAll('.carousel').forEach(car=>{
-  const slides=[...car.querySelectorAll('.slide')];
-  const navEl=car.parentElement.querySelector('.carousel-nav');
-  if(!slides.length)return;
+document.querySelectorAll('.carousel').forEach(track=>{
+  const wrap=track.closest('.carousel-wrap');
+  const slides=[...track.querySelectorAll('.slide')];
+  const navEl=wrap.querySelector('.carousel-nav');
+  if(slides.length<1)return;
 
   // click to open lightbox
   slides.forEach(s=>{
@@ -558,37 +562,41 @@ document.querySelectorAll('.carousel').forEach(car=>{
       const dot=document.createElement('button');
       dot.setAttribute('aria-label','Bild '+(i+1));
       if(i===0)dot.classList.add('active');
-      dot.addEventListener('click',()=>{go(i,true)});
+      dot.addEventListener('click',()=>go(i,true));
       navEl.appendChild(dot);
     });
     dots=[...navEl.querySelectorAll('button')];
   }
 
-  let current=0,paused=false;
+  let current=0,paused=false,timer;
+  function render(){
+    track.style.transform='translateX(-'+(current*100)+'%)';
+    dots.forEach((d,j)=>d.classList.toggle('active',j===current));
+  }
   function go(i,user){
     current=(i+slides.length)%slides.length;
-    // scroll only within the carousel container (no page shift)
-    car.scrollTo({left:slides[current].offsetLeft-slides[0].offsetLeft,behavior:'smooth'});
-    dots.forEach((d,j)=>d.classList.toggle('active',j===current));
-    if(user){paused=true;clearInterval(timer);setTimeout(()=>{paused=false;start()},6000)}
+    render();
+    if(user){paused=true;clearTimeout(timer);setTimeout(()=>{paused=false;start()},6000)}
   }
+  function start(){clearInterval(timer);timer=setInterval(()=>{if(!paused&&slides.length>1)go(current+1)},4500)}
 
-  // track active slide on manual scroll
-  const obs=new IntersectionObserver(es=>{
-    es.forEach(e=>{if(e.isIntersecting){
-      current=slides.indexOf(e.target);
-      dots.forEach((d,j)=>d.classList.toggle('active',j===current));
-    }});
-  },{root:car,threshold:.6});
-  slides.forEach(s=>obs.observe(s));
+  // pause on hover
+  wrap.addEventListener('mouseenter',()=>paused=true);
+  wrap.addEventListener('mouseleave',()=>paused=false);
 
-  // autoplay
-  let timer;
-  function start(){timer=setInterval(()=>{if(!paused)go(current+1)},4500)}
-  car.addEventListener('mouseenter',()=>paused=true);
-  car.addEventListener('mouseleave',()=>paused=false);
-  start();
+  // touch swipe
+  let x0=null;
+  track.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;paused=true},{passive:true});
+  track.addEventListener('touchend',e=>{
+    if(x0===null)return;
+    const dx=e.changedTouches[0].clientX-x0;
+    if(Math.abs(dx)>40)go(current+(dx<0?1:-1),true);
+    x0=null;paused=false;
+  },{passive:true});
+
+  render();start();
 });
+
 </script>
 </body>
 </html>
