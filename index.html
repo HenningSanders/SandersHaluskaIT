@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sanders & Haluska IT – Digitalisierung, KI & Software für den Mittelstand</title>
-<meta name="description" content="Wir digitalisieren den Mittelstand: vom Webauftritt über individuelle Software bis zu KI-gestützter Prozessautomatisierung – mit tiefem ERP- und SAP-Verständnis.">
+<title>Sanders & Haluska IT</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="description" content="Julian & Henning – euer Digitalisierungs-Duo aus Leipzig. Von der Website über eigene Software bis zur KI-Automatisierung: alles aus einer Hand.">
 
 <!--
 ========================================================================
@@ -147,7 +148,7 @@
   .ref .stat{font-family:var(--serif);font-size:34px;color:#fff;line-height:1}
   .ref .stat small{display:block;font-family:var(--sans);font-size:13px;color:#8C95A8;letter-spacing:.04em;margin-top:8px;text-transform:none}
   /* case study */
-  .case{display:grid;grid-template-columns:1.25fr 0.75fr;gap:40px;align-items:start}
+  .case{display:grid;grid-template-columns:1.25fr 0.75fr;gap:40px;align-items:stretch}
   .case-meta{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#D9A86A;margin-bottom:24px}
   .case-step{margin-bottom:24px}
   .case-label{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#D9A86A;font-weight:600;margin-bottom:7px}
@@ -159,10 +160,10 @@
   .case-vs strong{display:block;font-family:var(--serif);font-size:23px;color:#fff;font-weight:500;line-height:1.15}
   .case-vs small{display:block;font-size:13px;color:#9AA3B4;margin-top:6px}
   .case-arrow{color:#D9A86A;font-size:22px;margin:18px 0}
-  .case-shot{display:block;border:1px solid rgba(255,255,255,.14);border-radius:6px;overflow:hidden;margin-bottom:24px;transition:border-color .2s}
+  .case-shot{display:block;border:1px solid rgba(255,255,255,.14);border-radius:6px;overflow:hidden;flex:1 1 auto;min-height:140px;transition:border-color .2s}
   .case-shot:hover{border-color:#D9A86A}
-  .case-shot img{width:100%;height:auto;display:block}
-  .case-side{margin-top:-104px}
+  .case-shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+  .case-side{display:flex;flex-direction:column}
 
   /* ---------- Über uns ---------- */
   .people{display:grid;grid-template-columns:repeat(2,1fr);gap:48px}
@@ -227,7 +228,8 @@
     /* Case Study: einspaltig, verschachtelte Reihenfolge */
     .case{grid-template-columns:1fr;gap:0}
     .case-story,.case-side{display:contents}
-    .case-side{margin-top:0}
+    .case-shot{min-height:0;margin-bottom:24px}
+    .case-shot img{height:auto}
     .case-meta{order:1}
     .s-aufgabe{order:2}
     .s-einsatz{order:3}
