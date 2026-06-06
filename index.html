@@ -122,6 +122,7 @@
   .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(28px,4vw,42px);line-height:1.12;letter-spacing:-.015em;margin-bottom:18px}
   .sec-head p{color:var(--ink-soft);font-size:18px}
   #ueber-uns .sec-head{max-width:900px}
+  #leistungen .sec-head{max-width:none}
   .divider{border:none;border-top:1px solid var(--line)}
 
   /* ---------- Leistungen ---------- */
@@ -153,7 +154,7 @@
   .case-step p{color:#C7CDDA;font-size:16px;margin:0;line-height:1.6}
   .case-link{display:inline-block;margin-top:6px;color:#fff;border-bottom:1px solid #D9A86A;padding-bottom:2px;font-size:15px;transition:color .2s}
   .case-link:hover{color:#D9A86A}
-  .case-panel{border:1px solid rgba(255,255,255,.14);border-radius:6px;padding:34px 30px;text-align:center}
+  .case-panel{border:1px solid rgba(255,255,255,.14);border-radius:6px;padding:34px 30px;text-align:center;margin-bottom:24px}
   .case-vs-label{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8C95A8;margin-bottom:6px}
   .case-vs strong{display:block;font-family:var(--serif);font-size:23px;color:#fff;font-weight:500;line-height:1.15}
   .case-vs small{display:block;font-size:13px;color:#9AA3B4;margin-top:6px}
@@ -165,16 +166,18 @@
 
   /* ---------- Über uns ---------- */
   .people{display:grid;grid-template-columns:repeat(2,1fr);gap:48px}
-  .person{display:flex;gap:24px;align-items:flex-start}
+  .person{display:block}
+  .person-head{display:flex;gap:20px;align-items:center;margin-bottom:18px}
   .avatar{
     flex:0 0 96px;width:96px;height:96px;border-radius:3px;background:#EDE7DA;
     border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
     font-family:var(--serif);font-size:30px;color:var(--muted);overflow:hidden
   }
-  .avatar img{width:100%;height:100%;object-fit:cover}
-  .person h3{font-family:var(--serif);font-weight:600;font-size:22px;margin-bottom:4px}
-  .person-kicker{display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);font-weight:600;border:1px solid var(--line);border-radius:2px;padding:5px 11px;margin-bottom:14px}
-  .person .role{color:var(--accent-deep);font-size:14px;font-weight:500;margin-bottom:14px}
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+  .person-meta{min-width:0}
+  .person-kicker{display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);font-weight:600;border:1px solid var(--line);border-radius:2px;padding:5px 11px;margin-bottom:10px}
+  .person h3{font-family:var(--serif);font-weight:600;font-size:22px;margin-bottom:3px}
+  .person .role{color:var(--accent-deep);font-size:14px;font-weight:500}
   .person p{color:var(--ink-soft);font-size:16px}
 
   /* ---------- Kontakt ---------- */
@@ -206,15 +209,32 @@
 
   /* ---------- Responsive ---------- */
   @media(max-width:820px){
+    header{position:static}
     .nav-links{display:none}
-    .grid,.ref-grid,.people,.case,.contact-grid{grid-template-columns:1fr}
+    .grid,.ref-grid,.people,.contact-grid{grid-template-columns:1fr}
     .hero-grid{grid-template-columns:1fr;gap:36px}
     .hero-figure{max-width:100%;aspect-ratio:16/10;margin:0;order:-1}
-    .case-side{margin-top:28px}
+    .hero-actions{flex-wrap:nowrap;gap:12px}
+    .hero-actions .btn{flex:1;text-align:center;padding-left:14px;padding-right:14px}
     .contact-figure{aspect-ratio:16/10}
     .hero{padding:72px 0 64px}
     section{padding:68px 0}
-    .person{flex-direction:column}
+
+    /* Über uns: Bild + Kasten/Name/Rolle in einer Zeile, gleiche Höhe */
+    .person-head{align-items:stretch}
+    .avatar{flex-basis:104px;width:104px;height:auto;align-self:stretch}
+
+    /* Case Study: einspaltig, verschachtelte Reihenfolge */
+    .case{grid-template-columns:1fr;gap:0}
+    .case-story,.case-side{display:contents}
+    .case-side{margin-top:0}
+    .case-meta{order:1}
+    .s-aufgabe{order:2}
+    .s-einsatz{order:3}
+    .case-panel{order:4}
+    .s-website{order:5}
+    .case-shot{order:6}
+    .case-link{order:7}
   }
 </style>
 </head>
@@ -259,7 +279,12 @@
 <section id="leistungen">
   <div class="wrap">
     <div class="sec-head">
+      <div class="sec-tag">Leistungen</div>
       <h2>Was wir für dich machen.</h2>
+      <p>
+        Website, eigene Software, KI-Automatisierung – alles aus einer Hand.
+        Du brauchst dafür nur einen Ansprechpartner: uns.
+      </p>
     </div>
     <div class="grid">
       <div class="card">
@@ -306,14 +331,14 @@
     <div class="case">
       <div class="case-story">
         <div class="case-meta">Sicherheitsdienst · Website · Einsatzplanung</div>
-        <div class="case-step">
+        <div class="case-step s-aufgabe">
           <span class="case-label">Die Aufgabe</span>
           <p>
             Sauermann digitalisieren und skalierbarer machen – weg von
             Handarbeit, hin zu Prozessen, die mitwachsen.
           </p>
         </div>
-        <div class="case-step">
+        <div class="case-step s-einsatz">
           <span class="case-label">Einsatzplanung</span>
           <p>
             Vorher liefen die Schichten über Excel, und jeder Plan ging einzeln
@@ -322,7 +347,7 @@
             schicken lassen.
           </p>
         </div>
-        <div class="case-step">
+        <div class="case-step s-website">
           <span class="case-label">Website</span>
           <p>
             Dazu haben wir den kompletten Webauftritt neu gebaut – modern, klar
@@ -332,22 +357,22 @@
         <a href="https://sicherheitsdienst-sauermann.de/home/" target="_blank" rel="noopener" class="case-link">sicherheitsdienst-sauermann.de →</a>
       </div>
       <div class="case-side">
-      <a href="https://sicherheitsdienst-sauermann.de/home/" target="_blank" rel="noopener" class="case-shot">
-        <img src="sauermann.png" alt="Website von Sauermann Sicherheit" onerror="this.closest('.case-shot').style.display='none'">
-      </a>
-      <div class="case-panel">
-        <div class="case-vs">
-          <span class="case-vs-label">Vorher</span>
-          <strong>Excel + Einzel-Mails</strong>
-          <small>stundenlange Handarbeit</small>
+        <div class="case-panel">
+          <div class="case-vs">
+            <span class="case-vs-label">Vorher</span>
+            <strong>Excel + Einzel-Mails</strong>
+            <small>stundenlange Handarbeit</small>
+          </div>
+          <div class="case-arrow">↓</div>
+          <div class="case-vs">
+            <span class="case-vs-label">Heute</span>
+            <strong>Ein Klick</strong>
+            <small>eigenes Planungstool, komplett digital</small>
+          </div>
         </div>
-        <div class="case-arrow">↓</div>
-        <div class="case-vs">
-          <span class="case-vs-label">Heute</span>
-          <strong>Ein Klick</strong>
-          <small>eigenes Planungstool, komplett digital</small>
-        </div>
-      </div>
+        <a href="https://sicherheitsdienst-sauermann.de/home/" target="_blank" rel="noopener" class="case-shot">
+          <img src="sauermann.png" alt="Website von Sauermann Sicherheit" onerror="this.closest('.case-shot').style.display='none'">
+        </a>
       </div>
     </div>
   </div>
@@ -368,41 +393,45 @@
     </div>
     <div class="people">
       <div class="person">
-        <div class="avatar">
-          <img src="julian-haluska.jpg" alt="Julian Haluska" onerror="this.style.display='none';this.parentNode.textContent='J'">
+        <div class="person-head">
+          <div class="avatar">
+            <img src="julian-haluska.jpg" alt="Julian Haluska" onerror="this.style.display='none';this.parentNode.textContent='J'">
+          </div>
+          <div class="person-meta">
+            <span class="person-kicker">Die Technik</span>
+            <h3>Julian Haluska</h3>
+            <div class="role">Softwareentwicklung &amp; KI</div>
+          </div>
         </div>
-        <div>
-          <span class="person-kicker">Die Technik</span>
-          <h3>Julian Haluska</h3>
-          <div class="role">Softwareentwicklung &amp; KI</div>
-          <p>
-            Ich bin Julian. Seit über einem Jahrzehnt entwickle ich Software –
-            und ich habe ein eigenes Startup gegründet, das ich als
-            Geschäftsführer und CTO technisch verantworte, von der Plattform bis
-            zum laufenden Betrieb. Individuelle Softwareentwicklung kenne ich aus
-            Projekten im Handelsumfeld. Mein Ding ist KI-gestützte
-            Automatisierung: pragmatische Lösungen, die schnell live gehen und
-            dich im Alltag wirklich entlasten.
-          </p>
-        </div>
+        <p>
+          Ich bin Julian. Seit über einem Jahrzehnt entwickle ich Software –
+          und ich habe ein eigenes Startup gegründet, das ich als
+          Geschäftsführer und CTO technisch verantworte, von der Plattform bis
+          zum laufenden Betrieb. Individuelle Softwareentwicklung kenne ich aus
+          Projekten im Handelsumfeld. Mein Ding ist KI-gestützte
+          Automatisierung: pragmatische Lösungen, die schnell live gehen und
+          dich im Alltag wirklich entlasten.
+        </p>
       </div>
       <div class="person">
-        <div class="avatar">
-          <img src="henning-sanders.jpg" alt="Henning Sanders" onerror="this.style.display='none';this.parentNode.textContent='H'">
+        <div class="person-head">
+          <div class="avatar">
+            <img src="henning-sanders.jpg" alt="Henning Sanders" onerror="this.style.display='none';this.parentNode.textContent='H'">
+          </div>
+          <div class="person-meta">
+            <span class="person-kicker">Die Prozesse</span>
+            <h3>Henning Sanders</h3>
+            <div class="role">SAP-Beratung &amp; Business-Prozesse</div>
+          </div>
         </div>
-        <div>
-          <span class="person-kicker">Die Prozesse</span>
-          <h3>Henning Sanders</h3>
-          <div class="role">SAP-Beratung &amp; Business-Prozesse</div>
-          <p>
-            Ich bin Henning. Als SAP-Berater betreue ich vor allem die
-            Geschäftsprozesse großer Unternehmen – das ist mein Alltag. Dadurch
-            begreife ich schnell, wie ein Betrieb tickt und was wirklich
-            gebraucht wird, und ich stelle die richtigen Fragen. Genau dieses
-            Prozesswissen bringe ich ein: Ich übersetze, was dein Unternehmen
-            braucht, in das, was Julian dann baut.
-          </p>
-        </div>
+        <p>
+          Ich bin Henning. Als SAP-Berater betreue ich vor allem die
+          Geschäftsprozesse großer Unternehmen – das ist mein Alltag. Dadurch
+          begreife ich schnell, wie ein Betrieb tickt und was wirklich
+          gebraucht wird, und ich stelle die richtigen Fragen. Genau dieses
+          Prozesswissen bringe ich ein: Ich übersetze, was dein Unternehmen
+          braucht, in das, was Julian dann baut.
+        </p>
       </div>
     </div>
   </div>
